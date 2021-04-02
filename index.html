@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Is it a 𝕯ragon?</title>
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet">
+<style>
+/* font-family: 'Cinzel', serif; */
+/* font-family: 'IM Fell English', serif; */
+	:root {
+		margin: 0;
+		padding: 0;
+		font-family: 'IM Fell English', serif;
+		font-size: calc(14px + 1vmin);
+		background-image: url(background.jpg);
+		background-size: cover;
+		display: flex;
+		min-height: 100vh;
+		align-items: center;
+		justify-content: center;
+	}
+	* { text-align: center; }
+	main {
+		box-shadow: 0 0 1em rgba(255,255,255,0.9);
+		border-radius: 1em;
+		width: fit-content;
+		padding: 1em;
+		margin: 0 auto;
+		background-color: rgba(255,255,255, 0.5);
+		text-shadow: 0 0 4px white;
+	}
+	h1 {
+		font-size: calc(28px + 3vmin);
+		text-align: center;
+		font-family: 'Cinzel', serif;
+	}
+	table {
+		margin: 0 auto;
+	}
+	th {
+		font-weight: 900;
+	}
+	td, th {
+		padding: 0.5em 2em;
+		text-align: center;
+	}
+</style>
+</head>
+<body>
+
+<main>
+	<h1>Is it a Dragon?</h1>
+	<p>Not everything draconic is a Dragon.<br>Sometimes, it's a Wyvern.</p>
+	<table>
+		<tr>
+			<th></th>
+			<th>No Wings</th>
+			<th>Two Wings</th>
+		</tr>
+
+		<tr>
+			<th>No Legs</th>
+			<td>Wyrm</td>
+			<td>Amphithere</td>
+		</tr>
+		<tr>
+			<th>Two Legs</th>
+			<td>Lindworm</td>
+			<td>Wyvern</td>
+		</tr>
+		<tr>
+			<th>Four Legs</th>
+			<td>Drake</td>
+			<td>Dragon</td>
+		</tr>
+	</table>
+</main>
+</body>
+</html>
