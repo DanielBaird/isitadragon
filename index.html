@@ -1,57 +1,107 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
 <title>Is it a 𝕯ragon?</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet">
 <style>
 /* font-family: 'Cinzel', serif; */
 /* font-family: 'IM Fell English', serif; */
+	* {
+		padding: 0;
+		margin: 0;
+		text-align: center;
+	}
 	:root {
 		margin: 0;
 		padding: 0;
 		font-family: 'IM Fell English', serif;
+		line-height: 1.5;
 		font-size: calc(14px + 1vmin);
-		background-image: url(background.jpg);
+		/* font-size: clamp(18px, 2vmin, 30px); */
+		background-image:
+			url(background.jpg),
+			linear-gradient(to bottom, rgb(189, 128, 62),  rgb(114, 57, 21));
 		background-size: cover;
 		display: flex;
 		min-height: 100vh;
 		align-items: center;
 		justify-content: center;
 	}
-	* { text-align: center; }
+	:root:after {
+		content: "made with ♥️ by Daniel Baird \00a0 \00a0 daniel@danielbaird.com \00a0 \00a0 v2021.1";
+		font-size: 75%;
+		font-family: inherit;
+		text-align: center;
+		text-shadow: 0 0 8px white;
+		opacity: 0.66;
+		position: fixed;
+		bottom: 1em;
+		left: 0; right: 0;
+	}
 	main {
 		box-shadow: 0 0 1em rgba(255,255,255,0.9);
 		border-radius: 1em;
 		width: fit-content;
-		padding: 1em;
+		padding: 1em 1em 2em;
 		margin: 0 auto;
 		background-color: rgba(255,255,255, 0.5);
-		text-shadow: 0 0 4px white;
+		text-shadow: 0 0 8px white;
 	}
 	h1 {
-		font-size: calc(28px + 3vmin);
+		margin: 0.33em;
+		font-size: calc(42px + 5vmin);
 		text-align: center;
 		font-family: 'Cinzel', serif;
+		line-height: 0.8;
+		text-shadow: 0 0 15px rgb(200, 50, 50), 0 0 2px white;
+	}
+	h1 span {
+		display: block;
+		font-size: 50%;
+	}
+	p {
+		margin: 0.33em 0;
 	}
 	table {
 		margin: 0 auto;
+		border-collapse: collapse;
 	}
 	th {
 		font-weight: 900;
 	}
 	td, th {
-		padding: 0.5em 2em;
+		position: relative;
+		padding: 0.5em calc(0.5em + 1vmin);
 		text-align: center;
+		border: solid rgba(0,0,0, 0.33);
+		border-width: 2px 0 0;
+	}
+	tr:first-of-type th {
+		border-top: none;
+	}
+	td {
+		padding-top: 1.25em;
+	}
+	td:before {
+		content: 'no, it\'s a';
+		top: 0.5em;
+		font-size: 75%;
+		left: 0; right: 0;
+		position: absolute;
+	}
+	td.dragon:before {
+		content: 'Yes! it IS a';
 	}
 </style>
 </head>
 <body>
 
 <main>
-	<h1>Is it a Dragon?</h1>
-	<p>Not everything draconic is a Dragon.<br>Sometimes, it's a Wyvern.</p>
+	<h1><span>Is it a</span>Dragon?</h1>
+	<p>Not everything draconic is a Dragon.<br>Sometimes, it's a Wyvern or whatever.</p>
 	<table>
 		<tr>
 			<th></th>
@@ -72,7 +122,7 @@
 		<tr>
 			<th>Four Legs</th>
 			<td>Drake</td>
-			<td>Dragon</td>
+			<td class="dragon">Dragon</td>
 		</tr>
 	</table>
 </main>
