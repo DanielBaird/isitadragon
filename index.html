@@ -23,6 +23,7 @@
 		padding: 0;
 		margin: 0;
 		text-align: center;
+		transition: 0.5s background-image;
 	}
 	:root {
 		margin: 0;
@@ -50,6 +51,10 @@
 		position: fixed;
 		bottom: 1em;
 		left: 0; right: 0;
+	}
+	.wrapper {
+		display: flex;
+		flex-direction: row;
 	}
 	main {
 		box-shadow: 0 0 1em rgba(255,255,255,0.9);
@@ -102,40 +107,121 @@
 		left: 0; right: 0;
 		position: absolute;
 	}
-	td.dragon:before {
+	td.Dragon:before {
 		content: 'Yes! it IS a';
+	}
+	article {
+		display: none;
 	}
 </style>
 </head>
 <body>
 
-<main>
-	<h1><span>Is it a</span>Dragon?</h1>
-	<p>Not everything draconic is a Dragon.<br>Sometimes, it's a Wyvern or whatever.</p>
-	<table>
-		<tr>
-			<th></th>
-			<th>No Wings</th>
-			<th>Two Wings</th>
-		</tr>
+<div class="wrapper">
+	<main>
+		<h1><span>Is it a</span>Dragon?</h1>
+		<p>Not everything draconic is a Dragon.<br>Sometimes, it's a Wyvern or whatever.</p>
+		<table>
+			<tr>
+				<th></th>
+				<th>No Wings</th>
+				<th>Two Wings</th>
+			</tr>
 
-		<tr>
-			<th>No Legs</th>
-			<td>Wyrm</td>
-			<td>Amphithere</td>
-		</tr>
-		<tr>
-			<th>Two Legs</th>
-			<td>Lindworm</td>
-			<td>Wyvern</td>
-		</tr>
-		<tr>
-			<th>Four Legs</th>
-			<td>Drake</td>
-			<td class="dragon">Dragon</td>
-		</tr>
-	</table>
-</main>
+			<tr>
+				<th>No Legs</th>
+				<td class="Wyrm">Wyrm</td>
+				<td class="Amphithere">Amphithere</td>
+			</tr>
+			<tr>
+				<th>Two Legs</th>
+				<td class="Lindworm">Lindworm</td>
+				<td class="Wyvern">Wyvern</td>
+			</tr>
+			<tr>
+				<th>Four Legs</th>
+				<td class="Drake">Drake</td>
+				<td class="Dragon">Dragon</td>
+			</tr>
+		</table>
+	</main>
+
+	<article class="Wyrm">
+		The <a href="https://en.wikipedia.org/wiki/Lambton_Worm">Lambton
+		Worm</a> was only be defeated when John Lambton attached spikes to
+		his armour, causing the Worm to impale itself when trying to crush
+		him.
+	</article>
+	<article class="Amphithere">
+		Aztec god <a href="https://en.wikipedia.org/wiki/Quetzalcoatl">Quetzalcoatl</a>
+		is sometimes depicted as an Amphithere.
+	</article>
+	<article class="Lindworm">
+		A <a href="https://www.worldoftales.com/European_folktales/Norwegian_folktale_3.html">Norwegian
+		prince</a> born as a Lindworm was restored when his bride made him
+		shed skin after skin until his human body was revealed.
+	</article>
+	<article class="Wyvern">
+		Astrid Hofferson's mount in <a href="https://www.imdb.com/title/tt0892769/"><i>How
+		to Train Your Dragon</i></a> is a Deadly Nadder, a variety of Wyvern.
+	</article>
+	<article class="Drake">
+		Fire-drake <a href="http://tolkiengateway.net/wiki/Glaurung">Glaurung</a>
+		was a principal force in the
+		<a href="https://lotr.fandom.com/wiki/Dagor_Bragollach">Dagor
+		Bragollach</a> that broke the 400 year Siege of Angband near the end
+		of the First Age of Middle Earth.
+	</article>
+	<article class="Dragon">
+		<a href="http://tolkiengateway.net/wiki/Ancalagon">Ancalagon</a>,
+		<a href="https://awoiaf.westeros.org/index.php/Drogon">Drogon</a>,
+		<a href="https://pern.fandom.com/wiki/Mnementh">Mnementh</a>,
+		<a href="https://inheritance.fandom.com/wiki/Saphira">Saphira</a>,
+		<a href="http://tolkiengateway.net/wiki/Smaug">Smaug</a>,
+		<a href="https://www.dreamworks.com/how-to-train-your-dragon/explore/toothless">Toothless</a>...
+	</article>
+</div>
+<script>
+	// ----------------------------------------------------
+	var highlightedThing = null
+	var actionDelay = 10
+	var lastAction = actionDelay
+	// ----------------------------------------------------
+	document.onmousemove = ()=> {
+		console.log(lastAction)
+		lastAction = 0
+	}
+	// ----------------------------------------------------
+	// setInterval(()=> {
+	// 	lastAction++
+	// }, 500)
+	// ----------------------------------------------------
+	document.querySelectorAll('td').forEach( (t)=> {
+		t.onmouseover = (e) => changeHighlight(e.target)
+	})
+	// ----------------------------------------------------
+	function highlight(dom) {
+		// assume dom is a block like a table cell
+		if (typeof dom === 'string') {
+			dom = document.querySelector(dom)
+		}
+		dom.style.backgroundImage = 'radial-gradient(closest-side, white, rgba(255,255,255,0))'
+		highlightedThing = dom
+
+		var cls = dom.className
+		article = document.querySelector('article.' + cls)
+		// article.style.display = 'block'
+	}
+	// ----------------------------------------------------
+	function changeHighlight(newOne) {
+		if (highlightedThing) {
+			highlightedThing.style.backgroundImage = 'none'
+			document.querySelectorAll('article').forEach( (a) => a.style.display = 'none' )
+		}
+		highlight(newOne)
+	}
+	// ----------------------------------------------------
+</script>
 <script data-ad-client="ca-pub-9869820336262446" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 </body>
 </html>
